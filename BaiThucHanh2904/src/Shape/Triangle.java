@@ -1,64 +1,44 @@
-package Shape;
-public class Triangle extends Point{
-    private float canhA;
-    private float canhB;
-    private float canhC;
-    public Triangle(float canhA , float canhB , float canhC) {
-        this.canhA = canhA;
-        this.canhB = canhB;
-        this.canhC = canhC;
-    }
-    public Triangle() {
+package shapes;
+
+import java.lang.Math;
+
+public class triangle extends point {
+    private double AB, AC, BC;
+
+    public void nhap3Point() {
+        point p1 = new point();
+        System.out.println("Nhap diem A: ");
+        p1.nhapPoint();
+
+        point p2 = new point();
+        System.out.println("Nhap diem B: ");
+        p2.nhapPoint();
+
+        point p3 = new point();
+        System.out.println("Nhap diem C: ");
+        p3.nhapPoint();
+
+        AB = Math.sqrt(Math.pow(p2.tungDo - p1.tungDo, 2) + Math.pow(p2.hoanhDo - p1.hoanhDo, 2));
+        System.out.println("AB = " + AB);
+        AC = Math.sqrt(Math.pow(p3.tungDo - p1.tungDo, 2) + Math.pow(p3.hoanhDo - p1.hoanhDo, 2));
+        System.out.println("AC = " + AC);
+        BC = Math.sqrt(Math.pow(p3.tungDo - p2.tungDo, 2) + Math.pow(p3.hoanhDo - p2.hoanhDo, 2));
+        System.out.println("BC = " + BC);
     }
 
-    public void nhaptamgiac(){
-        Point p1 = new Point();
-        Point p2 = new Point();
-        Point p3 = new Point();
-        System.out.println("Nhap diem thu nhat: ");
-        p1.nhapDiem();
-        System.out.println("Nhap diem thu hai: ");
-        p2.nhapDiem();
-        System.out.println("Nhap diem thu ba: ");
-        p3.nhapDiem();
-        
-        canhA = (float)Math.sqrt(Math.pow(p1.hoanhDo-p2.hoanhDo, 2)+Math.pow(p1.tungDo-p2.tungDo, 2));
-        System.out.println("Nhap canh A: " + canhA);
-        canhB = (float)Math.sqrt(Math.pow(p2.hoanhDo-p3.hoanhDo, 2)+Math.pow(p2.tungDo-p3.tungDo, 2));
-        System.out.println("Nhap canh B: " + canhB);
-        canhC = (float)Math.sqrt(Math.pow(p1.hoanhDo-p3.hoanhDo, 2)+Math.pow(p1.tungDo-p3.tungDo, 2));
-        System.out.println("Nhap canh C: " + canhC);
-    }
-    
-    
-
-    public void kiemTraLoaiTamGiac(){
-
-            if(canhA+canhB>canhC && canhB+canhC>canhA && canhC+canhA>canhB)
-            {
-            
-            System.out.println("Day la tam giac nhon !!! ");
-            
-                if( canhA == canhB && canhB == canhC )
-            
-                        System.out.println("Day la tam giac deu !!!");
-            
-                if( canhA==canhB || canhB == canhC || canhC == canhA)
-            
-                        System.out.println("Day la tam giac can !!!");
+    public void soSanhTamGiac() {
+        if (AB + BC > AC && AB + AC > BC && BC + AC > AB) {
+            System.out.println("Ba diem vua nhap la 1 tam giac!");
+            if (AB == BC && BC == AC && AC == AB) {
+                System.out.println("Va do la tam giac deu!");
+            } else if (AB == BC || AB == AC || AC == BC) {
+                System.out.println("Va do la tam giac can!");
+            } else if ((AB * AB == BC * BC + AC * AC) || (BC * BC == AB * AB + AC * AC)
+                    || (AC * AC == BC * BC + AB * AB)) {
+                System.out.println("Va do la tam giac vuong!");
             }
-            
-            else
-                {
-                    System.out.println("Khong la 3 canh cua tam giac !!! ");
-                }
-            
-            if(canhA*canhA==canhB*canhB+canhC*canhC || canhB*canhB==canhA*canhA+canhC*canhC || canhC*canhC==canhA*canhA+canhB*canhB)
-            
-                    System.out.println("La tam giac vuong !!!"); 
-            
-                }
-        
-        
+        } else {
+            System.out.println("Ba diem vua nhap khong la tam giac!");
+        }
     }
-    
+}
