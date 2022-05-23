@@ -1,7 +1,7 @@
-import java.Util.ArrayList;
-import java.Util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Max {
+public class App24 {
     public static void main(String[] args) {
         ArrayList<Integer> arrListInteger = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
